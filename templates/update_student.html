@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Update Student - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>Update Student</h1>
+        <hr>
+        
+        <form method="POST">
+            <div class="mb-3">
+                <label for="s_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="s_name" name="s_name" value="{{ student.s_name }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="s_email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="s_email" name="s_email" value="{{ student.s_email }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="s_phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="s_phone" name="s_phone" value="{{ student.s_phone or '' }}">
+            </div>
+            
+            <div class="mb-3">
+                <label for="course_id" class="form-label">Course</label>
+                <select class="form-control" id="course_id" name="course_id" required>
+                    <option value="">Select Course</option>
+                    {% for course in courses %}
+                    <option value="{{ course.course_id }}" {% if course.course_id == student.course_id %}selected{% endif %}>{{ course.course_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Update Student</button>
+            <a href="{{ url_for('student_details', student_id=student.student_id) }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

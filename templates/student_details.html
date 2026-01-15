@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Student Details - Student Management System{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>{{ student.s_name }}</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{{ url_for('update_student', student_id=student.student_id) }}" class="btn btn-warning">Edit</a>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5>Student Information</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+                <p><strong>Email:</strong> {{ student.s_email }}</p>
+                <p><strong>Phone:</strong> {{ student.s_phone or 'N/A' }}</p>
+                <p><strong>Course:</strong> {{ student.course_name or 'N/A' }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5>Marks</h5>
+            </div>
+            <div class="card-body">
+                {% if marks %}
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mark in marks %}
+                        <tr>
+                            <td>{{ mark.subject }}</td>
+                            <td>{{ mark.marks }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No marks available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5>Attendance</h5>
+            </div>
+            <div class="card-body">
+                {% if attendance %}
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for att in attendance %}
+                        <tr>
+                            <td>{{ att.date }}</td>
+                            <td>{{ 'Present' if att.status == 1 else 'Absent' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No attendance records available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
