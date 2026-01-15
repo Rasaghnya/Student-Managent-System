@@ -133,25 +133,7 @@ The application uses the following main tables:
 - Total users count
 - Quick action buttons
 
-## Troubleshooting
 
-### MySQL Connection Error
-Ensure MySQL Server is running and credentials in `app.py` are correct:
-```bash
-mysql -u root -p
-```
-
-### Module Not Found Errors
-Reinstall dependencies:
-```bash
-pip install --upgrade -r requirements.txt
-```
-
-### Port 5000 Already in Use
-Change the port in `app.py`:
-```python
-app.run(debug=True, port=5001)
-```
 
 ## Future Enhancements
 
@@ -163,6 +145,4 @@ app.run(debug=True, port=5001)
 - Email verification for student registration
 - Batch student import from CSV
 
-## License
 
-This project is open source and available for educational purposes.
