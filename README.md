@@ -1,6 +1,6 @@
 # Student-Managent-System
 # Student Management System - Flask Application
-
+# first project
 A complete web-based Student Management System built with Flask and MySQL, featuring user authentication, student registration, course management, attendance tracking, and marks management.
 
 ## Features
